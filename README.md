@@ -1,10 +1,20 @@
-# Task-Tracker
+# TaskTracker
 
-Users of your app should be able to:
+To start your Phoenix server:
 
-Register an account \
-Log in / Log out \
-Create Tasks, entering a title and a description \
-Assign tasks to themselves or other users \
-Track how long they've worked on a task they're assigned to, in 15-minute increments. \
-Mark a task as completed or not. 
+  * Install dependencies with `mix deps.get`
+  * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
+  * Install Node.js dependencies with `cd assets && npm install`
+  * Start Phoenix endpoint with `mix phx.server`
+
+Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+
+Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+
+## Learn more
+
+  * Official website: http://www.phoenixframework.org/
+  * Guides: https://hexdocs.pm/phoenix/overview.html
+  * Docs: https://hexdocs.pm/phoenix
+  * Mailing list: http://groups.google.com/group/phoenix-talk
+  * Source: https://github.com/phoenixframework/phoenix
