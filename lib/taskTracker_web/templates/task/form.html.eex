@@ -13,17 +13,17 @@
   <%= textarea f, :desc %>
   <%= error_tag f, :desc %>
 
-  <%= label f, :completed %>
-  <%= checkbox f, :completed %>
-  <%= error_tag f, :completed %>
+  <%= label f, :complete %>
+  <%= checkbox f, :complete %>
+  <%= error_tag f, :complete %>
 
   <%= label f, :duration %>
   <%= number_input f, :duration %>
   <%= error_tag f, :duration %>
 
-  <%= label f, :assignedTo %>
-  <%= text_input f, :assignedTo %>
-  <%= error_tag f, :assignedTo %>
+  <%= label f, :assigned %>
+  <%= text_input f, :assigned %>
+  <%= error_tag f, :assigned %>
 
   <div>
     <%= submit "Save" %>

@@ -13,8 +13,8 @@
   </li>
 
   <li>
-    <strong>Completed:</strong>
-    <%= @task.completed %>
+    <strong>Complete:</strong>
+    <%= @task.complete %>
   </li>
 
   <li>
@@ -23,8 +23,8 @@
   </li>
 
   <li>
-    <strong>Assignedto:</strong>
-    <%= @task.assignedTo %>
+    <strong>Assigned:</strong>
+    <%= @task.assigned %>
   </li>
 
 </ul>

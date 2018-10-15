@@ -3,9 +3,9 @@ defmodule TaskTrackerWeb.TaskControllerTest do
 
   alias TaskTracker.Tasks
 
-  @create_attrs %{assignedTo: "some assignedTo", completed: true, desc: "some desc", duration: 42, title: "some title"}
-  @update_attrs %{assignedTo: "some updated assignedTo", completed: false, desc: "some updated desc", duration: 43, title: "some updated title"}
-  @invalid_attrs %{assignedTo: nil, completed: nil, desc: nil, duration: nil, title: nil}
+  @create_attrs %{assigned: "some assigned", complete: true, desc: "some desc", duration: 42, title: "some title"}
+  @update_attrs %{assigned: "some updated assigned", complete: false, desc: "some updated desc", duration: 43, title: "some updated title"}
+  @invalid_attrs %{assigned: nil, complete: nil, desc: nil, duration: nil, title: nil}
 
   def fixture(:task) do
     {:ok, task} = Tasks.create_task(@create_attrs)
@@ -60,7 +60,7 @@ defmodule TaskTrackerWeb.TaskControllerTest do
       assert redirected_to(conn) == Routes.task_path(conn, :show, task)
 
       conn = get(conn, Routes.task_path(conn, :show, task))
-      assert html_response(conn, 200) =~ "some updated assignedTo"
+      assert html_response(conn, 200) =~ "some updated assigned"
     end
 
     test "renders errors when data is invalid", %{conn: conn, task: task} do
