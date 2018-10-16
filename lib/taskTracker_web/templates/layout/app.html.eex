@@ -12,14 +12,12 @@
       <nav class="navbar navbar-expand-sm navbar-light bg-white">
       <%= if @current_user do %>
         <div class="col-4">
-          <a class="navbar-brand" href="/..">Task Tracker</a>
+          <a class="navbar-brand" href="/.."><h1>Task Tracker</h1></a>
         </div>
 
         <div class="col-8">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/tasks">Tasks</a>
-            </li>
+              <a class="nav-link" href="/tasks">My Tasks</a>
           </ul>
         </div>
       <% end %>

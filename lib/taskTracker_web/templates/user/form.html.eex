@@ -5,11 +5,13 @@
     </div>
   <% end %>
 
+<div class="form-group">
   <%= label f, :email %>
-  <%= text_input f, :email %>
+  <%= text_input f, :email, class: "form-control"%>
   <%= error_tag f, :email %>
+</div>
 
   <div>
-    <%= submit "Register" %>
+    <%= submit "Register", class: "btn btn-primary" %>
   </div>
 <% end %>
