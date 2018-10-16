@@ -9,6 +9,7 @@ defmodule TaskTracker.Users.User do
     timestamps()
   end
 
+  # regex from https://gist.github.com/mgamini/4f3a8bc55bdcc96be2c6 for email format
   @doc false
   def changeset(user, attrs) do
     user
