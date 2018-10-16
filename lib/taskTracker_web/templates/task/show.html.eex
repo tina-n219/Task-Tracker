@@ -8,26 +8,27 @@
   </li>
 
   <li>
-    <strong>Desc:</strong>
+    <strong>Description:</strong>
     <%= @task.desc %>
   </li>
 
   <li>
-    <strong>Complete:</strong>
+    <strong>Completed?:</strong>
     <%= @task.complete %>
   </li>
 
   <li>
-    <strong>Duration:</strong>
+    <strong>Time to complete:</strong>
     <%= @task.duration %>
   </li>
 
   <li>
-    <strong>Assigned:</strong>
+    <strong>Assigned to:</strong>
     <%= @task.assigned %>
   </li>
 
 </ul>
 
+ <span><%= link "Delete", to: Routes.task_path(@conn, :delete, @task), method: :delete, data: [confirm: "Are you sure?"] %></span>
 <span><%= link "Edit", to: Routes.task_path(@conn, :edit, @task) %></span>
 <span><%= link "Back", to: Routes.task_path(@conn, :index) %></span>
