@@ -4,6 +4,8 @@ defmodule TaskTrackerWeb.TaskController do
   alias TaskTracker.Tasks
   alias TaskTracker.Tasks.Task
 
+  alias TaskTracker.Assignments
+
   def index(conn, _params) do
     tasks = Tasks.list_tasks()
     render(conn, "index.html", tasks: tasks)

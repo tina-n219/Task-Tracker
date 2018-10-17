@@ -26,7 +26,6 @@
     <strong>Assigned to:</strong>
     <%= @task.assigned %>
   </li>
-
 </ul>
 
  <span><%= link "Delete", to: Routes.task_path(@conn, :delete, @task), method: :delete, data: [confirm: "Are you sure?"] %></span>
