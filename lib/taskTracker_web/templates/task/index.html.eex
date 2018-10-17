@@ -10,6 +10,11 @@
     </tr>
   </thead>
   <tbody>
+
+<%# My Tasks %>
+<%# for task <- @filtertasks do %>
+<%# show the stuff %>
+
 <%= for task <- @tasks do %>
     <tr>
       <td><%= task.title %></td>
