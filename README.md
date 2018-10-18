@@ -12,6 +12,8 @@ Design choices:
 - When viewing a task, you can see all the information regarding that task. 
 - When editing, can you see the task title, description, completed, and assigned user fields. If you are the same user that the task is assigned to will you, and only you, be able to see and fill out the time it took to complete that task.
 
+- When choosing to assign a user to a task, I put in a drop down select menu which shows only the registered users because I want the task to only be assigned to an exisiting user.  
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
