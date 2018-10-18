@@ -7,7 +7,10 @@
 //
 // Import dependencies
 //
-import "phoenix_html"
+
+import css from "../css/app.scss";
+import "phoenix_html";
+
 
 // Import local files
 //
