@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>TaskTracker · Phoenix Framework</title>
+    <title>TaskTracker</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
 
@@ -14,13 +14,17 @@
       <nav class="navbar navbar-expand-sm navbar-light bg-white">
       <%= if @current_user do %>
         <div class="col-4">
-          <a class="navbar-brand" href="/.."><h1>Task Tracker</h1></a>
+          <a class="navbar-brand" href="/tasks"><h1>Task Tracker !!</h1></a>
         </div>
 
         <div class="col-8">
           <ul class="navbar-nav mr-auto">
-              <a class="nav-link" href="/tasks">My Tasks</a>
+                <p class="my-3">
+                  User: <%= @current_user.email %> |
+                  <%= link("Logout", to: Routes.session_path(@conn, :delete), method: :delete) %>
+                </p>
           </ul>
+
         </div>
       <% end %>
 

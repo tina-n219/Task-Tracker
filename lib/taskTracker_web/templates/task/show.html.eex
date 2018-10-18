@@ -24,7 +24,7 @@
 
   <li>
     <strong>Assigned to:</strong>
-    <%= @task.user_id %>
+
   </li>
 </ul>
 

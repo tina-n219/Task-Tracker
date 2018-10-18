@@ -7,7 +7,8 @@ defmodule TaskTrackerWeb.TaskController do
 
   def index(conn, _params) do
     tasks = Tasks.list_tasks()
-    render(conn, "index.html", tasks: tasks)
+    users = Users.list_users()
+    render(conn, "index.html", tasks: tasks, users: users)
   end
 
   def new(conn, _params) do
@@ -30,6 +31,7 @@ defmodule TaskTrackerWeb.TaskController do
 
   def show(conn, %{"id" => id}) do
     task = Tasks.get_task!(id)
+    #users = Users.list_users()
     render(conn, "show.html", task: task)
   end
 

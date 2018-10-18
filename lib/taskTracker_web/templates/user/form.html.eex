@@ -14,4 +14,8 @@
   <div>
     <%= submit "Register", class: "btn btn-primary" %>
   </div>
+
+  <div>
+  <a href="/.."><p>Back</p></a>
+  </div>
 <% end %>
