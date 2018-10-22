@@ -21,7 +21,8 @@
           <ul class="navbar-nav mr-auto">
                 <p class="my-3">
                   User: <%= @current_user.email %> |
-                  <%= link("Logout", to: Routes.session_path(@conn, :delete), method: :delete) %>
+                  <%= link("Logout", to: Routes.session_path(@conn, :delete), method: :delete) %> |
+                  <%= link("My Profile", to: Routes.user_path(@conn, :show, @current_user))%>  
                 </p>
           </ul>
 
