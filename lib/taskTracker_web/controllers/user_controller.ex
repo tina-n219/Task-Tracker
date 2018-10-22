@@ -1,8 +1,9 @@
 defmodule TaskTrackerWeb.UserController do
   use TaskTrackerWeb, :controller
-
+  import Ecto.Query, only: [from: 2]
   alias TaskTracker.Users
   alias TaskTracker.Users.User
+  alias TaskTracker.Repo
 
   def index(conn, _params) do
     users = Users.list_users()
@@ -29,7 +30,9 @@ defmodule TaskTrackerWeb.UserController do
 
   def show(conn, %{"id" => id}) do
     user = Users.get_user!(id)
-    render(conn, "show.html", user: user)
+    listUsers = Users.list_users()
+    thouManager = Repo.all from u in User, where: ^id == u.manager_id;
+    render(conn, "show.html", user: user, thouManager: thouManager, listUsers: listUsers)
   end
 
   def edit(conn, %{"id" => id}) do

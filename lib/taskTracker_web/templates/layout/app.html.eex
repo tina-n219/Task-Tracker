@@ -13,19 +13,19 @@
     <div class="container">
       <nav class="navbar navbar-expand-sm navbar-light bg-white">
       <%= if @current_user do %>
-        <div class="col-4">
-          <a class="navbar-brand" href="/tasks"><h1>Task Tracker !!</h1></a>
-        </div>
+        
+        <a class="navbar-brand" href="/tasks"><h1>Task Tracker!</h1></a>
+        
 
         <div class="col-8">
           <ul class="navbar-nav mr-auto">
                 <p class="my-3">
                   User: <%= @current_user.email %> |
                   <%= link("Logout", to: Routes.session_path(@conn, :delete), method: :delete) %> |
-                  <%= link("My Profile", to: Routes.user_path(@conn, :show, @current_user))%>  
+                  <%= link("My Profile", to: Routes.user_path(@conn, :show, @current_user))%> |
+                  <%= link("My Tasks", to: Routes.task_path(@conn, :index))%> 
                 </p>
           </ul>
-
         </div>
       <% end %>
 

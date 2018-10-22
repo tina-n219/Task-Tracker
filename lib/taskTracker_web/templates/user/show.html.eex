@@ -10,10 +10,24 @@
     <%= if @user.manager_id == nil do %>
       <p>Reports To: None </p>
     <% else %>
-      <p>Reports To: <%= @user.manager_id %> </p>
+
+    <%= for user <- @listUsers do %>
+      <%= if @user.manager_id == user.id do %>
+        <p><strong>Reports To:</strong> <%= user.email %>  </p>
+      <% end %>
+    <% end %>
     <% end %>
   </li>
 </ul>
 
-<span><%= link "Edit", to: Routes.user_path(@conn, :edit, @user) %></span>
+<div>
+  <h3>You Manage: </h3>
+  <%= for user <- @thouManager do %>
+  <ul>
+    <li> <%= user.email %> </li>
+  </ul>
+  <% end %>
+</div>
+
+<span><%= link "Edit", to: Routes.user_path(@conn, :edit, @user) %></span> |
 <span><%= link "Back", to: Routes.user_path(@conn, :index) %></span>
