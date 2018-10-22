@@ -6,7 +6,13 @@
     <strong>Email:</strong>
     <%= @user.email %>
   </li>
-
+  <li>
+    <%= if @user.manager_id == nil do %>
+      <p>Reports To: None </p>
+    <% else %>
+      <p>Reports To: <%= @user.manager_id %> </p>
+    <% end %>
+  </li>
 </ul>
 
 <span><%= link "Edit", to: Routes.user_path(@conn, :edit, @user) %></span>
