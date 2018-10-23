@@ -33,8 +33,8 @@ defmodule TaskTrackerWeb.UserController do
   def show(conn, %{"id" => id}) do
     user = Users.get_user!(id)
     listUsers = Users.list_users()
-    thouManager = Repo.all from u in User, where: ^id == u.manager_id;
-    render(conn, "show.html", user: user, thouManager: thouManager, listUsers: listUsers)
+    thouManage = Repo.all from u in User, where: ^id == u.manager_id;
+    render(conn, "show.html", user: user, thouManage: thouManage, listUsers: listUsers)
   end
 
   def edit(conn, %{"id" => id}) do

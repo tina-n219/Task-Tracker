@@ -22,7 +22,7 @@
 
 <div>
   <h3>You Manage: </h3>
-  <%= for user <- @thouManager do %>
+  <%= for user <- @thouManage do %>
   <table>
     <tr> <%= user.email %> </tr>
   </table>
