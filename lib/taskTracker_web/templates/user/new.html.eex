@@ -1,6 +1,6 @@
 <h1>Sign Up as a New User !!</h1>
 
 <%# need unique users to register %>
-<%= render "form.html", Map.put(assigns, :action, Routes.user_path(@conn, :create)) %>
+<%= render "form.html", Map.put(Map.put(assigns, :action, Routes.user_path(@conn, :create)), :edit, false) %>
 
 <%# <span><%= link "Back", to: Routes.user_path(@conn, :index) %> 

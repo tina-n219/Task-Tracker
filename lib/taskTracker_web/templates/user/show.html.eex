@@ -20,6 +20,10 @@
   </li>
 </ul>
 
+<span><%= link "Edit", to: Routes.user_path(@conn, :edit, @user) %></span> |
+<span><%= link "Back", to: Routes.task_path(@conn, :index) %></span>
+<br>
+
 <div>
   <h3>You Manage: </h3>
   <table>
@@ -30,21 +34,19 @@
   </thead>
 
   <tbody>
-  <%# <%= if length(@thouManage) == 0 do %>
-    <%# <tr>
+  <%= if length(@thouManage) == 0 do %>
+    <tr>
         <td> <p>You manage no one.</p></td>
-    </tr> %>
-  <%# <% else %> 
+    </tr>
+  <% else %>
     <%= for user <- @thouManage do %>
       <tr>
         <td> <%= user.email %> </td>
         <td> <a href="#">Task Report </a></td>
       </tr>
     <% end %>
-  <%# <% end %>
+  <% end %>
   </tbody>
   </table>
 </div>
 
-<span><%= link "Edit", to: Routes.user_path(@conn, :edit, @user) %></span> |
-<span><%= link "Back", to: Routes.user_path(@conn, :index) %></span>

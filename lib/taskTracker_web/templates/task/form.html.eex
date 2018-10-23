@@ -25,6 +25,7 @@
   </div>
 <% end %>
 
+<%# Allows only the user whom the task is assigned to, to enter the time spent on task %>
 <%= if @edit  and @task.user_id == @current_user.id do %>
   <div class="form-group">
     <%= label f, "Time to Complete"%>
@@ -33,8 +34,7 @@
   </div>
 <% end %>
 
-
-
+<%# Displays only the users you manage %>
 <div class="form-group">
   <%= label f, :user_id %>
   Assign: <%= select(f, :user_id, Enum.map(@myUnderlings, (&{&1.email, &1.id}))) %>

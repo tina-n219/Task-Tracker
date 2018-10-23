@@ -23,7 +23,7 @@
                   User: <%= @current_user.email %> |
                   <%= link("Logout", to: Routes.session_path(@conn, :delete), method: :delete) %> |
                   <%= link("My Profile", to: Routes.user_path(@conn, :show, @current_user))%> |
-                  <%= link("My Tasks", to: Routes.task_path(@conn, :index))%> 
+                  <%= link("Tasks", to: Routes.task_path(@conn, :index))%> 
                 </p>
           </ul>
         </div>

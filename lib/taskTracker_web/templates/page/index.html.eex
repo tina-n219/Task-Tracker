@@ -4,7 +4,7 @@
     <%= if @current_user do %>
       <p class="my-3">
         User: <%= @current_user.email %> |
-        <%= link("My Tasks", to: Routes.task_path(@conn, :index)) %>
+        <%= link("Tasks", to: Routes.task_path(@conn, :index)) %>
       </p>
     <% else %>
     <h1>Task Tracker !!</h1>
