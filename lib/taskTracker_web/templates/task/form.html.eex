@@ -37,7 +37,6 @@
 
 <div class="form-group">
   <%= label f, :user_id %>
-  <%= IO.inspect  @myUnderlings %>
   Assign: <%= select(f, :user_id, Enum.map(@myUnderlings, (&{&1.email, &1.id}))) %>
   <%= error_tag f, :user_id %>
   </div>

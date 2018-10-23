@@ -20,17 +20,15 @@ defmodule TaskTrackerWeb.TaskController do
 
     currentUserId = conn.assigns[:current_user].id
     myUnderlings = Repo.all from u in User,
-            where: u.manager_id == ^currentUserId,
-            select: u.email;
+            where: u.manager_id == ^currentUserId; 
 
     render(conn, "new.html", changeset: changeset, users: users, myUnderlings: myUnderlings)
   end
 
   def create(conn, %{"task" => task_params}) do
     currentUserId = conn.assigns[:current_user].id
-    myUnderlings = Repo.all from u in Users,
-            where: u.manager_id == ^currentUserId,
-            select: u;     
+    myUnderlings = Repo.all from u in User,
+            where: u.manager_id == ^currentUserId;     
     case Tasks.create_task(task_params) do
       {:ok, task} ->
         conn
@@ -47,8 +45,7 @@ defmodule TaskTrackerWeb.TaskController do
     #users = Users.list_users()
     currentUserId = conn.assigns[:current_user].id
     myUnderlings = Repo.all from u in User,
-            where: u.manager_id == ^currentUserId,
-            select: u.email;
+            where: u.manager_id == ^currentUserId; 
 
     render(conn, "show.html", task: task, myUnderlings: myUnderlings)
   end
@@ -59,8 +56,7 @@ defmodule TaskTrackerWeb.TaskController do
 
     currentUserId = conn.assigns[:current_user].id
     myUnderlings = Repo.all from u in User,
-            where: u.manager_id == ^currentUserId,
-            select: u.email;
+            where: u.manager_id == ^currentUserId; 
 
     changeset = Tasks.change_task(task)
     render(conn, "edit.html", task: task, changeset: changeset, users: users, myUnderlings: myUnderlings)
@@ -71,8 +67,7 @@ defmodule TaskTrackerWeb.TaskController do
     users = Users.list_users()
     currentUserId = conn.assigns[:current_user].id
     myUnderlings = Repo.all from u in User,
-            where: u.manager_id == ^currentUserId,
-            select: u.email;
+            where: u.manager_id == ^currentUserId; 
     case Tasks.update_task(task, task_params) do
       {:ok, task} ->
         conn

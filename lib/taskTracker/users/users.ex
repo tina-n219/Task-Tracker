@@ -40,7 +40,7 @@ defmodule TaskTracker.Users do
       ** (Ecto.NoResultsError)
 
   """
-  def get_user!(id), do: Repo.get!(User, id) |> Repo.preload(:manger)
+  def get_user!(id), do: Repo.get!(User, id) |> Repo.preload(:manager)
 
   def get_user(id), do: Repo.get(User, id)
   

@@ -30,12 +30,18 @@
   </thead>
 
   <tbody>
+  <%# <%= if length(@thouManage) == 0 do %>
+    <%# <tr>
+        <td> <p>You manage no one.</p></td>
+    </tr> %>
+  <%# <% else %> 
     <%= for user <- @thouManage do %>
       <tr>
         <td> <%= user.email %> </td>
         <td> <a href="#">Task Report </a></td>
       </tr>
     <% end %>
+  <%# <% end %>
   </tbody>
   </table>
 </div>
