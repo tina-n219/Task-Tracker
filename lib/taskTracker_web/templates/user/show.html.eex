@@ -23,9 +23,9 @@
 <div>
   <h3>You Manage: </h3>
   <%= for user <- @thouManager do %>
-  <ul>
-    <li> <%= user.email %> </li>
-  </ul>
+  <table>
+    <tr> <%= user.email %> </tr>
+  </table>
   <% end %>
 </div>
 
