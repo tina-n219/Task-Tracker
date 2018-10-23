@@ -22,11 +22,22 @@
 
 <div>
   <h3>You Manage: </h3>
-  <%= for user <- @thouManage do %>
   <table>
-    <tr> <%= user.email %> </tr>
+  <thead>
+    <tr>
+    <th>User</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= for user <- @thouManage do %>
+      <tr>
+        <td> <%= user.email %> </td>
+        <td> <a href="#">Task Report </a></td>
+      </tr>
+    <% end %>
+  </tbody>
   </table>
-  <% end %>
 </div>
 
 <span><%= link "Edit", to: Routes.user_path(@conn, :edit, @user) %></span> |

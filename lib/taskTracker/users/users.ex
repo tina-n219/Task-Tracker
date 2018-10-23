@@ -21,6 +21,11 @@ defmodule TaskTracker.Users do
     Repo.all(User)
   end
 
+  def list_users_by(map) do
+    
+  
+  end
+
   @doc """
   Gets a single user.
 
@@ -35,7 +40,7 @@ defmodule TaskTracker.Users do
       ** (Ecto.NoResultsError)
 
   """
-  def get_user!(id), do: Repo.get!(User, id)
+  def get_user!(id), do: Repo.get!(User, id) |> Repo.preload(:manger)
 
   def get_user(id), do: Repo.get(User, id)
   

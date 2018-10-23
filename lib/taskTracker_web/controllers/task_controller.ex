@@ -1,9 +1,12 @@
 defmodule TaskTrackerWeb.TaskController do
   use TaskTrackerWeb, :controller
-
+  import Ecto.Query, only: [from: 2]
   alias TaskTracker.Tasks
   alias TaskTracker.Tasks.Task
   alias TaskTracker.Users
+  alias TaskTracker.Users.User
+
+  alias TaskTracker.Repo
 
   def index(conn, _params) do
     tasks = Tasks.list_tasks()
@@ -14,10 +17,20 @@ defmodule TaskTrackerWeb.TaskController do
   def new(conn, _params) do
     changeset = Tasks.change_task(%Task{})
     users = Users.list_users()
-    render(conn, "new.html", changeset: changeset, users: users)
+
+    currentUserId = conn.assigns[:current_user].id
+    myUnderlings = Repo.all from u in User,
+            where: u.manager_id == ^currentUserId,
+            select: u.email;
+
+    render(conn, "new.html", changeset: changeset, users: users, myUnderlings: myUnderlings)
   end
 
   def create(conn, %{"task" => task_params}) do
+    currentUserId = conn.assigns[:current_user].id
+    myUnderlings = Repo.all from u in Users,
+            where: u.manager_id == ^currentUserId,
+            select: u;     
     case Tasks.create_task(task_params) do
       {:ok, task} ->
         conn
@@ -25,26 +38,41 @@ defmodule TaskTrackerWeb.TaskController do
         |> redirect(to: Routes.task_path(conn, :show, task))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        render(conn, "new.html", changeset: changeset, myUnderlings: myUnderlings)
     end
   end
 
   def show(conn, %{"id" => id}) do
     task = Tasks.get_task!(id)
     #users = Users.list_users()
-    render(conn, "show.html", task: task)
+    currentUserId = conn.assigns[:current_user].id
+    myUnderlings = Repo.all from u in User,
+            where: u.manager_id == ^currentUserId,
+            select: u.email;
+
+    render(conn, "show.html", task: task, myUnderlings: myUnderlings)
   end
 
   def edit(conn, %{"id" => id}) do
     task = Tasks.get_task!(id)
     users = Users.list_users()
+
+    currentUserId = conn.assigns[:current_user].id
+    myUnderlings = Repo.all from u in User,
+            where: u.manager_id == ^currentUserId,
+            select: u.email;
+
     changeset = Tasks.change_task(task)
-    render(conn, "edit.html", task: task, changeset: changeset, users: users)
+    render(conn, "edit.html", task: task, changeset: changeset, users: users, myUnderlings: myUnderlings)
   end
 
   def update(conn, %{"id" => id, "task" => task_params}) do
     task = Tasks.get_task!(id)
     users = Users.list_users()
+    currentUserId = conn.assigns[:current_user].id
+    myUnderlings = Repo.all from u in User,
+            where: u.manager_id == ^currentUserId,
+            select: u.email;
     case Tasks.update_task(task, task_params) do
       {:ok, task} ->
         conn
@@ -52,7 +80,7 @@ defmodule TaskTrackerWeb.TaskController do
         |> redirect(to: Routes.task_path(conn, :show, task))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", task: task, changeset: changeset, users: users)
+        render(conn, "edit.html", task: task, changeset: changeset, users: users, myUnderlings: myUnderlings)
     end
   end
 
