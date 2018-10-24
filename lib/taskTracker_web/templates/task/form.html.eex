@@ -29,7 +29,6 @@
 <%= if @edit  and @task.user_id == @current_user.id do %>
   <div class="form-group">
     <%= label f, "Time to Complete"%>
-    <%= number_input f, :duration, class: "form-control", value: 0, step: 15 %>
     <%= error_tag f, :duration %>
   </div>
 <% end %>

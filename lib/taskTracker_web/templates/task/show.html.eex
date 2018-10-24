@@ -18,8 +18,8 @@
   </li>
 
   <li>
-    <strong>Time to complete:</strong>
-    <%= @task.duration %>
+    <strong>Time Block:</strong>
+    
   </li>
 
   <li>

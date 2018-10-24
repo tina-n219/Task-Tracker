@@ -21,9 +21,9 @@
           <ul class="navbar-nav mr-auto">
                 <p class="my-3">
                   User: <%= @current_user.email %> |
-                  <%= link("Logout", to: Routes.session_path(@conn, :delete), method: :delete) %> |
-                  <%= link("My Profile", to: Routes.user_path(@conn, :show, @current_user))%> |
-                  <%= link("Tasks", to: Routes.task_path(@conn, :index))%> 
+                  <%= link("Logout", class: "btn btn-primary", to: Routes.session_path(@conn, :delete), method: :delete) %>
+                  <%= link("My Profile", class: "btn btn-primary", to: Routes.user_path(@conn, :show, @current_user))%>
+                  <%= link("Tasks", class: "btn btn-primary", to: Routes.task_path(@conn, :index))%> 
                 </p>
           </ul>
         </div>
