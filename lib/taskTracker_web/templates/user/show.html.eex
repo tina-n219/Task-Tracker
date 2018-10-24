@@ -43,6 +43,8 @@
     <%= for user <- @thouManage do %>
       <tr>
         <td> <%= user.email %> </td>
+
+        
         <%= for task <- @tasks do %>
             <%= if task.user_id == user.id do %>
               <td><%= link task.title, to: Routes.task_path(@conn, :show, task) %></td>
@@ -53,6 +55,8 @@
               <% end %>
             <% end %>
         <% end %>
+
+
       </tr>
     <% end %>
   <% end %>
