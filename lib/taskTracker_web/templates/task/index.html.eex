@@ -1,6 +1,6 @@
 <h1>Current Tasks</h1>
 
-<table class="table table-striped">
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Title</th>
@@ -20,7 +20,7 @@
               <%end%>
           <%end%>  
       <td>
-        <%= link "View",  class: "btn btn-secondary", to: Routes.task_path(@conn, :show, task)%>
+        <%= link "View",  class: "btn btn-info btn-sm", to: Routes.task_path(@conn, :show, task)%>
       </td>
     </tr>
 <% end %>

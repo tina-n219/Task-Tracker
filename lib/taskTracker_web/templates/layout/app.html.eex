@@ -10,20 +10,20 @@
 
   
   <body>
+  
     <div class="container">
+    
       <nav class="navbar navbar-expand-sm navbar-light bg-white">
+      <a class="navbar-brand" href="/tasks"><h1>Task Tracker!</h1></a>
+      
       <%= if @current_user do %>
-        
-        <a class="navbar-brand" href="/tasks"><h1>Task Tracker!</h1></a>
-        
-
         <div class="col-8">
           <ul class="navbar-nav mr-auto">
                 <p class="my-3">
                   User: <%= @current_user.email %> |
-                  <%= link("Logout", class: "btn btn-primary", to: Routes.session_path(@conn, :delete), method: :delete) %>
-                  <%= link("My Profile", class: "btn btn-primary", to: Routes.user_path(@conn, :show, @current_user))%>
-                  <%= link("Tasks", class: "btn btn-primary", to: Routes.task_path(@conn, :index))%> 
+                  <%= link("Logout", class: "btn btn-info btn-xs", to: Routes.session_path(@conn, :delete), method: :delete) %>
+                  <%= link("My Profile", class: "btn btn-info btn-xs", to: Routes.user_path(@conn, :show, @current_user))%>
+                  <%= link("Tasks", class: "btn btn-info btn-xs", to: Routes.task_path(@conn, :index))%> 
                 </p>
           </ul>
         </div>
