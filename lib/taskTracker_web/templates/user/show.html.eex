@@ -22,14 +22,14 @@
 
 <span><%= link "Edit", to: Routes.user_path(@conn, :edit, @user) %></span> |
 <span><%= link "Back", to: Routes.task_path(@conn, :index) %></span>
-<br>
 
 <div>
   <h3>You Manage: </h3>
   <table>
   <thead>
     <tr>
-    <th>User</th>
+    <th>Users</th>
+    <th> Task Report </th>
     </tr>
   </thead>
 
@@ -42,7 +42,11 @@
     <%= for user <- @thouManage do %>
       <tr>
         <td> <%= user.email %> </td>
-        <td> <a href="#">Task Report </a></td>
+        <%= for task <- @tasks do %>
+            <%= if task.user_id == user.id do %>
+              <td><%= link task.title, to: Routes.task_path(@conn, :show, task) %></td>
+            <% end %>
+        <% end %>
       </tr>
     <% end %>
   <% end %>

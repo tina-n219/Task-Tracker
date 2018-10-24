@@ -42,13 +42,20 @@ defmodule TaskTrackerWeb.TaskController do
 
   def show(conn, %{"id" => id}) do
     task = Tasks.get_task!(id)
-    #users = Users.list_users()
     currentUserId = conn.assigns[:current_user].id
     myUnderlings = Repo.all from u in User,
             where: u.manager_id == ^currentUserId; 
 
     render(conn, "show.html", task: task, myUnderlings: myUnderlings)
   end
+
+  # def show_taskRep(conn, %{"id" => id}) do
+  #   user = Users.get_user(id)
+  #   task_repo = Repo.all from t in Task,
+  #           where: t.user_id == ^id; 
+
+  #   render(conn, "show_repo.html", user: user, task_repo: task_repo)
+  # end
 
   def edit(conn, %{"id" => id}) do
     task = Tasks.get_task!(id)

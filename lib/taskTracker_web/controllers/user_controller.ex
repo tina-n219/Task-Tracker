@@ -4,6 +4,7 @@ defmodule TaskTrackerWeb.UserController do
   alias TaskTracker.Users
   alias TaskTracker.Users.User
   alias TaskTracker.Repo
+  alias TaskTracker.Tasks
 
   def index(conn, _params) do
     users = Users.list_users()
@@ -33,8 +34,9 @@ defmodule TaskTrackerWeb.UserController do
   def show(conn, %{"id" => id}) do
     user = Users.get_user!(id)
     listUsers = Users.list_users()
+    tasks = Tasks.list_tasks
     thouManage = Repo.all from u in User, where: ^id == u.manager_id;
-    render(conn, "show.html", user: user, thouManage: thouManage, listUsers: listUsers)
+    render(conn, "show.html", user: user, thouManage: thouManage, listUsers: listUsers, tasks: tasks)
   end
 
   def edit(conn, %{"id" => id}) do
