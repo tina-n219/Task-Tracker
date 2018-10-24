@@ -29,7 +29,8 @@
   <thead>
     <tr>
     <th>Users</th>
-    <th> Task Report </th>
+    <th> Task </th>
+    <th> Status </th>
     </tr>
   </thead>
 
@@ -45,6 +46,11 @@
         <%= for task <- @tasks do %>
             <%= if task.user_id == user.id do %>
               <td><%= link task.title, to: Routes.task_path(@conn, :show, task) %></td>
+              <%= if task.complete do %>
+                <td> <p> Complete </p> </td>
+              <% else %>
+                <td> <p> Incomplete </p> </td>
+              <% end %>
             <% end %>
         <% end %>
       </tr>
