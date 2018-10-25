@@ -2,7 +2,7 @@
 
 cd assets 
 export MIX_ENV=prod
-export PORT=4747
+export PORT=4748
 npm install
 node_modules/.bin/webpack --mode production
 cd ..
