@@ -27,7 +27,7 @@
         <th>End Time</th>
       </tr>
       
-      
+
     <%= for timeBlock <- @task.timeblock do %>
       <%= if timeBlock.task_id == @task.id do %>
       <tr>

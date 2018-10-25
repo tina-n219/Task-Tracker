@@ -56,7 +56,6 @@ $(function () {
     });
   });
 
-  let editAction = $('#edit-work-button');
   let deleteAction = $('#delete-work-button');
   
   deleteAction.click((ev) => {
@@ -74,8 +73,12 @@ $(function () {
     });
   });
 
-editAction.click((ev) => {
-  console.log("edit");
+  window.showTimePicker = ((ev) => {
+    console.log("edit");
+    let editAction = $('#edit-work-button');
+    let insertTime = $(ev.target).data('insertTime-id');
+    insertTime.show();
+  });
+});
 
-});
-});
+

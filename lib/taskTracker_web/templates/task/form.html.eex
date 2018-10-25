@@ -46,11 +46,6 @@
     <button id="end-work-button" 
     data-task-id="<%= @task.id %>" class="btn btn-danger">End Task </button>
   </div>
-  <div class="timeblock-form">
-    <p></p>
-  </div>
-
-
 
 <div id="timeblock-div">
 <table class="table table-striped">
@@ -65,12 +60,16 @@
       <tr>
       <td> <%= timeBlock.startTime %> </td>
       <td> <%= timeBlock.endTime %> </td>
-      <td> <button id="edit-work-button" data-timeblock-id="<%= timeBlock.id %>" class="btn btn-secondary">Edit </td>
+      <td> <button id="edit-work-button" data-timeblock-id="<%= timeBlock.id %>" class="btn btn-secondary" onclick="showTimePicker()">Edit </td>
       <td> <button id="delete-work-button" data-timeblock-id="<%= timeBlock.id %>" class="btn btn-warning">Delete</button>
       </tr>
+      <input data-insertTime-id="<%= timeBlock.id %>  + <%= timeBlock.startTime%>" type="datetime-local" style="display:none">
+      
       <% end %>
     <% end %>
     </table>
+    
+
 </div>
 <% end %>
 <%# <% end %> 
