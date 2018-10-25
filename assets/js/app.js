@@ -20,29 +20,38 @@ import css from "../css/app.scss";
 //
 // Local files can be imported directly using relative paths, for example:
 // import socket from "./socket"
+var startTime = "~N[2000-01-01 23:00:07]";
+var endTime = "~N[2000-01-01 23:00:07]";
 
 $(function () {
-    $('#start-work-button').click((ev) => {
+  $('#start-work-button').click((ev) => {
+    startTime = new Date();
+    console.log(startTime);
+  });
+});
+
+$(function () {
+    $('#end-work-button').click((ev) => {
       let task_id = $(ev.target).data('task-id');
-      let startTime = "~N[2000-01-01 23:00:07]";
-      let endTime = "~N[2000-01-01 23:00:07]";
-  
+      let endTime = new Date()
       let text = JSON.stringify({
         timeblock: {
-          task_id: task_id,
           startTime: startTime,
-          endTime: endTime
+          endTime: endTime,
+          task_id: task_id,
         },
       });
       console.log(text);
 
-      $.ajax(timeblocks_path, {
+      $.ajax("/ajax/timeblocks/", {
         method: "post",
         dataType: "json",
         contentType: "application/json; charset=UTF-8",
         data: text,
         success: (resp) => {
-          $('#timeblock-form').text(`(your sart time: ${resp.data.startTime})`);
+          // $('#timeblock-form').text(`(your sart time: ${resp.data.startTime})`);
+          console.log("went through");
+          console.log(resp);
         },
       });
     });

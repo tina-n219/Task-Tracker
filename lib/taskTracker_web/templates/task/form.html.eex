@@ -25,19 +25,6 @@
   </div>
 <% end %>
 
-<%# Allows only the user whom the task is assigned to, to enter the time spent on task %>
-<%# <%= if @edit  and @task.user_id == @current_user.id do %>
-<%= if @edit do %>
-  <div class="form-group">
-    <button id="start-work-button" 
-    data-task-id="<%= @task.id %>" class="btn btn-success">Start Task </button>
-  </div>
-  <div class="timeblock-form">
-    <p></p>
-  </div>
-<% end %>
-<%# <% end %> 
-
 <%# Displays only the users you manage %>
 <div class="form-group">
   <%= label f, :user_id %>
@@ -49,3 +36,19 @@
     <%= submit "Save", class: "btn btn-primary" %>
   </div>
 <% end %>
+
+<%# Allows only the user whom the task is assigned to, to enter the time spent on task %>
+<%# <%= if @edit  and @task.user_id == @current_user.id do %>
+
+<%= if @edit do %>
+  <div>
+  <button id="start-work-button" 
+    data-task-id="<%= @task.id %>" class="btn btn-success">Start Task </button>
+    <button id="end-work-button" 
+    data-task-id="<%= @task.id %>" class="btn btn-danger">End Task </button>
+  </div>
+  <div class="timeblock-form">
+    <p></p>
+  </div>
+<% end %>
+<%# <% end %> 

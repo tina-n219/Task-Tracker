@@ -4,8 +4,8 @@ defmodule TaskTracker.TimeBlocks.TimeBlock do
 
 
   schema "timeblocks" do
-    field :endTime, :naive_datetime
     field :startTime, :naive_datetime
+    field :endTime, :naive_datetime
     belongs_to :task, TaskTracker.Tasks.Task
 
     timestamps()
