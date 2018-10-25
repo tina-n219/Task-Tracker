@@ -5,6 +5,7 @@ defmodule TaskTrackerWeb.TaskController do
   alias TaskTracker.Tasks.Task
   alias TaskTracker.Users
   alias TaskTracker.Users.User
+  alias TaskTracker.TimeBlocks.TimeBlock
 
   alias TaskTracker.Repo
 
@@ -45,7 +46,7 @@ defmodule TaskTrackerWeb.TaskController do
     currentUserId = conn.assigns[:current_user].id
     myUnderlings = Repo.all from u in User,
             where: u.manager_id == ^currentUserId; 
-
+            
     render(conn, "show.html", task: task, myUnderlings: myUnderlings)
   end
 

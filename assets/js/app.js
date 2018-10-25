@@ -31,8 +31,6 @@ $(function () {
     startTime = new Date();
     startAction.attr("disabled", true);
     stopAction.attr("disabled", false);
-    stopAction.attr
-    console.log(startTime);
   });
 
 
@@ -48,18 +46,16 @@ $(function () {
         task_id: task_id,
       },
     });
-    console.log(text);
 
     $.ajax("/ajax/timeblocks/", {
       method: "post",
       dataType: "json",
       contentType: "application/json; charset=UTF-8",
       data: text,
-      success: (resp) => {
-        // $('#timeblock-form').text(`(your sart time: ${resp.data.startTime})`);
-        console.log("went through");
-        console.log(resp);
-      },
+      // success: (resp) => {
+      //   // $('#timeblock-form').text(`(your sart time: ${resp.data.startTime})`);
+      //   console.log("went through");
+      // },
     });
   });
 });

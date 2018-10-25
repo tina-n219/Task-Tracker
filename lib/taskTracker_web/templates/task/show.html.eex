@@ -1,5 +1,7 @@
 <h1>Show Task</h1>
-
+ <span><%= link "Delete", to: Routes.task_path(@conn, :delete, @task), method: :delete, data: [confirm: "Are you sure?"] %></span>
+<span><%= link "Edit", to: Routes.task_path(@conn, :edit, @task) %></span>
+<span><%= link "Back", to: Routes.task_path(@conn, :index) %></span>
 <ul>
 
   <li>
@@ -17,17 +19,21 @@
     <%= @task.complete %>
   </li>
 
-  <li>
+  
     <strong>Time Block:</strong>
-    
-  </li>
-
-  <li>
-    <strong>Assigned to:</strong>
-
-  </li>
+     <table class="table table-striped">
+      <tr>
+        <th>Start Time</th>
+        <th>End Time</th>
+      </tr>
+      
+    <%= for timeBlock <- @task.timeblock do %>
+      <%= if timeBlock.task_id == @task.id do %>
+      <tr>
+      <td> <%= timeBlock.startTime %> </td>
+      <td> <%= timeBlock.endTime %> </td>
+      </tr>
+      <% end %>
+    <% end %>
+     <table>
 </ul>
-
- <span><%= link "Delete", to: Routes.task_path(@conn, :delete, @task), method: :delete, data: [confirm: "Are you sure?"] %></span>
-<span><%= link "Edit", to: Routes.task_path(@conn, :edit, @task) %></span>
-<span><%= link "Back", to: Routes.task_path(@conn, :index) %></span>
