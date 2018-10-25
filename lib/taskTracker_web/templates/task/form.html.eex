@@ -52,19 +52,29 @@
       <tr>
         <th>Start Time</th>
         <th>End Time</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th>Edit Time Block</th>
+        <th>Delete Time Block</th>
       </tr>
+
+    
     <%= for timeBlock <- @task.timeblock do %>
       <%= if timeBlock.task_id == @task.id do %>
+      
       <tr>
-      <td> <%= timeBlock.startTime %> </td>
-      <td> <%= timeBlock.endTime %> </td>
-      <td> <button id="edit-work-button" data-timeblock-id="<%= timeBlock.id %>" class="btn btn-secondary" onclick="showTimePicker()">Edit </td>
+      <td> <span id="startTD"><%= timeBlock.startTime %></span>
+          <span id="startInput"  style="display:none"><input type="datetime-local" data-timeblock-id="newStart-input"></span>
+      </td>
+
+      <td> <span id="endTD"><%= timeBlock.endTime %></span>
+           <span id="endInput" style="display:none"><input type="datetime-local" data-timeblock-id="newEnd-input"></span>
+      </td>
+
+      <td> <button onclick="window.editTimeBlock(this)" id="edit-work-button" data-timeblock-id="<%= timeBlock.id %>" class="btn btn-secondary">Edit</button>
+          <button id="save-work-button" style="display:none" class="btn btn-success">Save</button></td>
       <td> <button id="delete-work-button" data-timeblock-id="<%= timeBlock.id %>" class="btn btn-warning">Delete</button>
       </tr>
-      <input data-insertTime-id="<%= timeBlock.id %>  + <%= timeBlock.startTime%>" type="datetime-local" style="display:none">
-      
+
+      </div>
       <% end %>
     <% end %>
     </table>

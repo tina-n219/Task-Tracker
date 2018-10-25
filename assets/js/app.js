@@ -67,18 +67,30 @@ $(function () {
       method: "delete",
       dataType: "json",
       contentType: "application/json; charset=UTF-8",
-      // success: (resp) => {
-      //   $('#timeblock-div').text(`(your update: ${resp.data.task_id})`);
-      // },
     });
   });
 
-  window.showTimePicker = ((ev) => {
-    console.log("edit");
-    let editAction = $('#edit-work-button');
-    let insertTime = $(ev.target).data('insertTime-id');
-    insertTime.show();
-  });
+  // let showTimePicker = ((ev) => {
+  //   let insertTime = $(ev.target).data('timeblock-id');
+  //   let blah = $('#' + insertTime)
+  //   blah.show();
+  // });
+
+  // $("#edit-work-button").click( 
+  //   showTimePicker
+  // );
+
+  window.editTimeBlock = (butt) => {
+    // let editButton = $('#edit-work-button');
+    // let time_block_id = $(butt).data("timeblock-id");
+    $('#startTD').hide();
+    $('#endTD').hide();
+    $('#startInput').show();
+    $('#endInput').show();
+    
+    $('#edit-work-button').hide();
+    $('#save-work-button').show();
+  }
 });
 
 
