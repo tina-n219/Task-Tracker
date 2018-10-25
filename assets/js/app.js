@@ -57,18 +57,22 @@ $(function () {
       //   console.log("went through");
       // },
     });
+  });
 
-    let editAction = $('#edit-work-button');
-    let deleteAction = $('#delete-work-button');
-    
-    deleteAction.click((ev) => {
-      console.log("delete");
-    let timeBlockID = $(ev.target).data('timeblock-id');
-      $.ajax("/ajax/timeblocks/" + timeBlockID, {
-        method: "delete",
-        dataType: "json",
-        contentType: "application/json; charset=UTF-8",
-      });
+  let editAction = $('#edit-work-button');
+  let deleteAction = $('#delete-work-button');
+  
+  deleteAction.click((ev) => {
+    console.log("delete");
+  let timeBlockID = $(ev.target).data('timeblock-id');
+  console.log({timeBlockID});
+    $.ajax("/ajax/timeblocks/" + timeBlockID, {
+      method: "delete",
+      dataType: "json",
+      contentType: "application/json; charset=UTF-8",
+      // success: (resp) => {
+      //   $('#timeblock-div').text(`(your update: ${resp.data.task_id})`);
+      // },
     });
   });
 });

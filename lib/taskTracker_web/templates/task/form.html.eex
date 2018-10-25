@@ -39,7 +39,18 @@
 
 <%# Allows only the user whom the task is assigned to, to enter the time spent on task %>
 <%# <%= if @edit  and @task.user_id == @current_user.id do %>
-<div>
+<%= if @edit do %>
+  <div>
+  <button id="start-work-button" 
+    data-task-id="<%= @task.id %>" class="btn btn-success">Start Task </button>
+    <button id="end-work-button" 
+    data-task-id="<%= @task.id %>" class="btn btn-danger">End Task </button>
+  </div>
+  <div class="timeblock-form">
+    <p></p>
+  </div>
+<% end %>
+<div id="timeblock-div">
 <table class="table table-striped">
       <tr>
         <th>Start Time</th>
@@ -53,21 +64,11 @@
       <td> <%= timeBlock.startTime %> </td>
       <td> <%= timeBlock.endTime %> </td>
       <td> <button id="edit-work-button" data-timeblock-id="timeBlock.id" class="btn btn-secondary">Edit </td>
-      <td> <button id="delete-work-button" data-timeblock-id="timeBlock.id" class="btn btn-secondary">Delete </td>
+      <td> <button id="delete-work-button" data-timeblock-id="<%= timeBlock.id %>" class="btn btn-warning">Delete</button>
       </tr>
       <% end %>
     <% end %>
     </table>
 </div>
-<%= if @edit do %>
-  <div>
-  <button id="start-work-button" 
-    data-task-id="<%= @task.id %>" class="btn btn-success">Start Task </button>
-    <button id="end-work-button" 
-    data-task-id="<%= @task.id %>" class="btn btn-danger">End Task </button>
-  </div>
-  <div class="timeblock-form">
-    <p></p>
-  </div>
-<% end %>
+
 <%# <% end %> 
