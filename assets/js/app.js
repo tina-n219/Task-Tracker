@@ -57,5 +57,18 @@ $(function () {
       //   console.log("went through");
       // },
     });
+
+    let editAction = $('#edit-work-button');
+    let deleteAction = $('#delete-work-button');
+    
+    deleteAction.click((ev) => {
+      console.log("delete");
+    let timeBlockID = $(ev.target).data('timeblock-id');
+      $.ajax("/ajax/timeblocks/" + timeBlockID, {
+        method: "delete",
+        dataType: "json",
+        contentType: "application/json; charset=UTF-8",
+      });
+    });
   });
 });

@@ -39,7 +39,26 @@
 
 <%# Allows only the user whom the task is assigned to, to enter the time spent on task %>
 <%# <%= if @edit  and @task.user_id == @current_user.id do %>
-
+<div>
+<table class="table table-striped">
+      <tr>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    <%= for timeBlock <- @task.timeblock do %>
+      <%= if timeBlock.task_id == @task.id do %>
+      <tr>
+      <td> <%= timeBlock.startTime %> </td>
+      <td> <%= timeBlock.endTime %> </td>
+      <td> <button id="edit-work-button" data-timeblock-id="timeBlock.id" class="btn btn-secondary">Edit </td>
+      <td> <button id="delete-work-button" data-timeblock-id="timeBlock.id" class="btn btn-secondary">Delete </td>
+      </tr>
+      <% end %>
+    <% end %>
+    </table>
+</div>
 <%= if @edit do %>
   <div>
   <button id="start-work-button" 
