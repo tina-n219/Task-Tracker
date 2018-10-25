@@ -49,7 +49,9 @@
   <div class="timeblock-form">
     <p></p>
   </div>
-<% end %>
+
+
+
 <div id="timeblock-div">
 <table class="table table-striped">
       <tr>
@@ -63,12 +65,12 @@
       <tr>
       <td> <%= timeBlock.startTime %> </td>
       <td> <%= timeBlock.endTime %> </td>
-      <td> <button id="edit-work-button" data-timeblock-id="timeBlock.id" class="btn btn-secondary">Edit </td>
+      <td> <button id="edit-work-button" data-timeblock-id="<%= timeBlock.id %>" class="btn btn-secondary">Edit </td>
       <td> <button id="delete-work-button" data-timeblock-id="<%= timeBlock.id %>" class="btn btn-warning">Delete</button>
       </tr>
       <% end %>
     <% end %>
     </table>
 </div>
-
+<% end %>
 <%# <% end %> 

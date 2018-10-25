@@ -39,6 +39,7 @@ $(function () {
     let endTime = new Date();
     stopAction.attr("disabled", true);
     startAction.attr("disabled", false);
+    location.reload();
     let text = JSON.stringify({
       timeblock: {
         startTime: startTime,
@@ -52,10 +53,6 @@ $(function () {
       dataType: "json",
       contentType: "application/json; charset=UTF-8",
       data: text,
-      // success: (resp) => {
-      //   // $('#timeblock-form').text(`(your sart time: ${resp.data.startTime})`);
-      //   console.log("went through");
-      // },
     });
   });
 
@@ -66,6 +63,7 @@ $(function () {
     console.log("delete");
   let timeBlockID = $(ev.target).data('timeblock-id');
   console.log({timeBlockID});
+  location.reload();
     $.ajax("/ajax/timeblocks/" + timeBlockID, {
       method: "delete",
       dataType: "json",
@@ -75,4 +73,9 @@ $(function () {
       // },
     });
   });
+
+editAction.click((ev) => {
+  console.log("edit");
+
+});
 });
