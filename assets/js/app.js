@@ -24,35 +24,42 @@ var startTime = "~N[2000-01-01 23:00:07]";
 var endTime = "~N[2000-01-01 23:00:07]";
 
 $(function () {
-  $('#start-work-button').click((ev) => {
+  let startAction = $('#start-work-button');
+  let stopAction = $('#end-work-button');
+
+  startAction.click((ev) => {
     startTime = new Date();
+    startAction.attr("disabled", true);
+    stopAction.attr("disabled", false);
+    stopAction.attr
     console.log(startTime);
   });
-});
 
-$(function () {
-    $('#end-work-button').click((ev) => {
-      let task_id = $(ev.target).data('task-id');
-      let endTime = new Date()
-      let text = JSON.stringify({
-        timeblock: {
-          startTime: startTime,
-          endTime: endTime,
-          task_id: task_id,
-        },
-      });
-      console.log(text);
 
-      $.ajax("/ajax/timeblocks/", {
-        method: "post",
-        dataType: "json",
-        contentType: "application/json; charset=UTF-8",
-        data: text,
-        success: (resp) => {
-          // $('#timeblock-form').text(`(your sart time: ${resp.data.startTime})`);
-          console.log("went through");
-          console.log(resp);
-        },
-      });
+  stopAction.click((ev) => {
+    let task_id = $(ev.target).data('task-id');
+    let endTime = new Date();
+    stopAction.attr("disabled", true);
+    startAction.attr("disabled", false);
+    let text = JSON.stringify({
+      timeblock: {
+        startTime: startTime,
+        endTime: endTime,
+        task_id: task_id,
+      },
+    });
+    console.log(text);
+
+    $.ajax("/ajax/timeblocks/", {
+      method: "post",
+      dataType: "json",
+      contentType: "application/json; charset=UTF-8",
+      data: text,
+      success: (resp) => {
+        // $('#timeblock-form').text(`(your sart time: ${resp.data.startTime})`);
+        console.log("went through");
+        console.log(resp);
+      },
     });
   });
+});
