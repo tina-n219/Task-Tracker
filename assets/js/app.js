@@ -80,16 +80,35 @@ $(function () {
   //   showTimePicker
   // );
 
-  window.editTimeBlock = (butt) => {
-    // let editButton = $('#edit-work-button');
-    // let time_block_id = $(butt).data("timeblock-id");
-    $('#startTD').hide();
-    $('#endTD').hide();
-    $('#startInput').show();
-    $('#endInput').show();
+  window.editTimeBlock = (ev) => {
+
+    // let s = $(ev.target).data('startTime-id');
+    // let e = $(ev.target).data('endTime-id');
+    let timeBlock_id = $(ev).data('timeblock-id');
+    console.log(timeBlock_id);
+    $('#startTD' + timeBlock_id).hide();
+    $('#endTD' + timeBlock_id).hide();
+    $('#startInput' + timeBlock_id).show();
+    $('#endInput' + timeBlock_id).show();  
     
-    $('#edit-work-button').hide();
-    $('#save-work-button').show();
+    $('#edit-work-button' + timeBlock_id).hide();
+    $('#save-work-button' + timeBlock_id).show();
+
+
+    // let text = JSON.stringify({
+    //   timeblock: {
+    //     startTime: startTime,
+    //     endTime: endTime,
+    //     task_id: task_id,
+    //   },
+    // });
+
+    // $.ajax("/ajax/timeblocks/", {
+    //   method: "post",
+    //   dataType: "json",
+    //   contentType: "application/json; charset=UTF-8",
+    //   data: text,
+    // });
   }
 });
 
