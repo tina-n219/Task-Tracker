@@ -62,15 +62,27 @@
       
       <tr>
       <td> <span id="startTD<%= timeBlock.id %>"><%= timeBlock.startTime %></span>
-          <span id="startInput<%= timeBlock.id %>"  style="display:none"><input type="datetime-local" data-startTime-id="<%= @task.id %>"></span>
+          <span id="startInput<%= timeBlock.id %>"  style="display:none">
+              <input id="start-<%= timeBlock.id %>" type="datetime-local" data-startTime-id="<%= @task.id %>">
+          </span>
       </td>
 
       <td> <span id="endTD<%= timeBlock.id %>"><%= timeBlock.endTime %></span>
-           <span id="endInput<%= timeBlock.id %>" style="display:none"><input type="datetime-local" data-endTime-id="<%= @task.id %>"></span>
+           <span id="endInput<%= timeBlock.id %>" style="display:none">
+              <input id="end-<%= timeBlock.id %>" type="datetime-local" data-endTime-id="<%= @task.id %>">
+          </span>
       </td>
 
-      <td> <button onclick=window.editTimeBlock(this) id="edit-work-button<%= timeBlock.id %>" data-timeblock-id="<%= timeBlock.id %>" class="btn btn-secondary">Edit</button>
-          <button id="save-work-button<%= timeBlock.id %>" style="display:none" class="btn btn-success">Save</button></td>
+      <td> <button onclick=window.editTimeBlock(this) id="edit-work-button<%= timeBlock.id %>" 
+                    data-timeblock-id="<%= timeBlock.id %>" class="btn btn-secondary">Edit</button>
+
+          <button onclick=window.saveTimeBlock(this) id="save-work-button<%= timeBlock.id %>" 
+                  style="display:none" 
+                  data-timeblock-id="<%= timeBlock.id %>"
+                  data-task-id="<%= @task.id %>"
+                  class="btn btn-success">Save</button>
+      </td>
+      
       <td> <button id="delete-work-button" data-timeblock-id="<%= timeBlock.id %>" class="btn btn-warning">Delete</button>
       </tr>
 
